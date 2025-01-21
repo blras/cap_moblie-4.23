@@ -18,6 +18,7 @@
 #include "Bullet.h"
 #include "RogHpbar.h"
 #include "RogTextActor.h"
+#include "RogItem.h"
 #include "Particles/ParticleSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -204,10 +205,11 @@ void ARogCharacter::Death()
 	if (Target != nullptr)
 	{
 		int gex = 20;
-		if (Target->isBoss())
+		if (this->isBoss())
 			gex = 100;
 		Target->SetExp(Target->GetExp() + gex);
 	}
+	DropItem();
 	UWorld* const World = GetWorld();
 	World->GetTimerManager().SetTimer(TimerHandle_DeathTimerExpired, this, & ARogCharacter::ObjDestroy, 5);
 }
@@ -332,7 +334,20 @@ void ARogCharacter::ObjDestroy()
 }
 void ARogCharacter::DropItem()
 {
-
+	float spawnChance = FMath::RandRange(0, 100);
+	int envitr = 0;
+	UWorld* const World = GetWorld();
+	if (spawnChance < 20)
+	{
+		UWorld* const world = GetWorld();
+		//float length = Length;
+		FVector SpawnLocation = GetActorLocation();
+		SpawnLocation.Z = SpawnLocation.Z + 280;
+		const FVector Dir = FVector(FMath::RandRange(0, 360), 0.0f, 0.0f);
+		const FRotator SpawnRotation = Dir.Rotation();
+		ARogItem* item;
+		item = world->SpawnActor<ARogItem>(SpawnLocation, SpawnRotation);
+	}
 }
 bool ARogCharacter::isLive()
 {

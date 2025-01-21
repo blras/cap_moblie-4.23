@@ -273,6 +273,8 @@ void ARogLevelStream::LevelStream_Implementation(int32 leveli, FBoxVolume Stream
 		int envitr = levelcount / 4;
 		if(envitr<7)
 			Var->Setenvitr(envitr);
+		float rate = Var->GetEnemyRate();
+		Var->SetEnemyRate(rate+1);
 	}
 	BoxVol0 = true;
 }

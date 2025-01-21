@@ -177,7 +177,7 @@ AUserChar::AUserChar()
 	GWeaponComponent->RelativeScale3D=FVector(1.3, 1.3, 1.3);
 
 	// Movement
-	MoveSpeed = 1900.0f;
+	MoveSpeed = 900.0f;
 	GetCharacterMovement()->MaxWalkSpeed = MoveSpeed;
 	bUseControllerRotationYaw = false;
 	skillsView = false;
@@ -627,7 +627,7 @@ void AUserChar::Shotgun()
 				FRotator shotRo = FireRotation + FRotator( 0, -shotlo+(i*3),0);
 				bullet = World->SpawnActor<ABullet>(SpawnLocation + FVector(0, 50, 40), shotRo);
 				bullet->Shooter = this;
-				bullet->SetDmg(Dmg * SkillLeveli[1]);
+				bullet->SetDmg(Dmg + ((Dmg / 4) * SkillLeveli[1]));
 				if (BulletEffect != nullptr)
 					bullet->SetParticle(BulletEffect);
 				if (HitEffect != nullptr)
@@ -638,7 +638,7 @@ void AUserChar::Shotgun()
 			// spawn the projectile
 			effect = World->SpawnActor<ARogExplosionActor>(SpawnLocation + FireRotation.RotateVector(gunoffset), FireRotation);
 			effect->Shooter = this;
-			effect->SetDmg(Dmg*SkillLeveli[1]);
+			effect->SetDmg(Dmg + ((Dmg / 4) * SkillLeveli[1]));
 			if (ChargeEffect != nullptr)
 				effect->SetParticle(ChargeHitEffect);
 			if (ChargeHitEffect != nullptr)
@@ -782,8 +782,9 @@ void AUserChar::ChargeShot()
 		ABullet* effect;
 		// spawn the projectile
 		effect = World->SpawnActor<ABullet>(SpawnLocation + FireRotation.RotateVector(gunoffset), FireRotation);
+		effect->SetActorScale3D(FVector(2,2,2));
 		effect->Shooter = this;
-		effect->SetDmg(Dmg + ((Dmg/2)* SkillLeveli[3]));
+		effect->SetDmg(Dmg* (SkillLeveli[3]+1));
 		if (ChargeEffect != nullptr)
 			effect->SetParticle(ChargeEffect);
 		if (ChargeHitEffect != nullptr)

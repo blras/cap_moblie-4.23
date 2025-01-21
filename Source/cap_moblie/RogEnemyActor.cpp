@@ -206,7 +206,7 @@ ARogEnemyActor::ARogEnemyActor()
 	}
 	envitr = 0;
 	MaxEnemyNum = 99;
-	EnemyRate = 0.4;
+	EnemyRate = 50;
 }
 
 // Called when the game starts or when spawned
