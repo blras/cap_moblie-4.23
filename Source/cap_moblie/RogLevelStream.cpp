@@ -332,7 +332,7 @@ void ARogLevelStream::InitiateLevelStream_Implementation()
 	case 180: ylen = ylen - len; break;
 	case 270: xlen = xlen + len; break;
 	}
-	trans = FTransform(FRotator(0, tyaw, 0), FVector(trans.GetTranslation().X + xlen, trans.GetTranslation().Y, 0)+ylen, FVector(1, 1, 1));
+	trans = FTransform(FRotator(0, tyaw, 0), FVector(trans.GetTranslation().X+xlen, trans.GetTranslation().Y+ylen, 0), FVector(1, 1, 1));
 	mNextBox.BoxVolume->SetWorldTransform(trans);
 	if (num == 7)
 		mNextBox.outYaw = mNextBox.outYaw - 90 < 0 ? mNextBox.outYaw + 270 : mNextBox.outYaw - 90;

@@ -334,15 +334,15 @@ void ARogCharacter::ObjDestroy()
 }
 void ARogCharacter::DropItem()
 {
-	float spawnChance = FMath::RandRange(0, 100);
+	float spawnChance = FMath::RandRange(0, 99);
 	int envitr = 0;
 	UWorld* const World = GetWorld();
-	if (spawnChance < 20)
+	if (spawnChance < 100)
 	{
 		UWorld* const world = GetWorld();
 		//float length = Length;
 		FVector SpawnLocation = GetActorLocation();
-		SpawnLocation.Z = SpawnLocation.Z + 280;
+		SpawnLocation.Z = SpawnLocation.Z + 180;
 		const FVector Dir = FVector(FMath::RandRange(0, 360), 0.0f, 0.0f);
 		const FRotator SpawnRotation = Dir.Rotation();
 		ARogItem* item;

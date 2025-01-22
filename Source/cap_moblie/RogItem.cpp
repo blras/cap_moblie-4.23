@@ -16,12 +16,13 @@ ARogItem::ARogItem()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ItemMesh(TEXT("/Game/Meshes/items/SM_Item_Chr_Bag_Large_01"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ItemMesh(TEXT("/Game/Meshes/items/SM_Item_Potion_01"));
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	MeshComponent->SetStaticMesh(ItemMesh.Object);
 	MeshComponent->SetupAttachment(RootComponent);
 	MeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	MeshComponent->SetWorldScale3D(FVector(1, 1, 1));
+	MeshComponent->SetSimulatePhysics(true);
 
 	ProxSphere = CreateDefaultSubobject<USphereComponent>(FName("ProxSphere"));
 	ProxSphere->SetupAttachment(MeshComponent);

@@ -53,7 +53,7 @@ void ARogStage::SpawnObject_Implementation()
 void ARogStage::SpawnEnemy_Implementation()
 {
 	//int count = CharacterinStage.Num();
-	float spawnChance = FMath::RandRange(0, 100);
+	float spawnChance = FMath::RandRange(0, 99);
 	ARogEnemyActor* Var;
 	int envitr = 0;
 	UWorld* const World = GetWorld();
