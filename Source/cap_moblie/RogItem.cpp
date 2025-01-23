@@ -52,7 +52,6 @@ void ARogItem::Prox_Implementation(class UPrimitiveComponent* OverlappedComp, AA
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("itemProx"));
 		AUserChar* user = Cast<AUserChar>(OtherActor);
 		int heal = user->GetHp()+75;
 		int m = user->GetMaxHp();

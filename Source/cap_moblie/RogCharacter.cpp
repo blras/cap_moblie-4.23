@@ -337,7 +337,7 @@ void ARogCharacter::DropItem()
 	float spawnChance = FMath::RandRange(0, 99);
 	int envitr = 0;
 	UWorld* const World = GetWorld();
-	if (spawnChance < 100)
+	if (spawnChance < 10)
 	{
 		UWorld* const world = GetWorld();
 		//float length = Length;

@@ -245,7 +245,7 @@ AUserChar::AUserChar()
 	chargePer = 0;
 	channelPer = 0;
 	skillPoint = 0;
-	Dmg = 8;
+	Dmg = 7;
 	trigged = false;
 	bCanSpree = false;
 	Spreeing = false;
@@ -900,7 +900,7 @@ void AUserChar::SkillLevelUp(int Skillnum)
 	SkillLeveli[Skillnum] += 1;
 	switch (Skillnum)
 	{
-	case 4: Dmg += 1; break;
+	case 4: Dmg += 2; break;
 	case 5: Armor += 1; break;
 	case 6: Crit += 1; break;
 	case 7: CritDmg += 0.3; break;
