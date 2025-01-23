@@ -98,6 +98,7 @@ protected:
 	void ExtraShot(FVector FireDirection, FVector gunoffset);
 	void ChannelShot(FVector FireDirection);
 	void SwapWeapons(USkeletalMeshComponent* weapon, USkeletalMeshComponent* toweapon);
+	void ReStart();
 	UAnimMontage* AnimmontageLeft;
 	UAnimMontage* AnimmontageRight;
 	UAnimMontage* AnimmontageDouble;
@@ -122,6 +123,8 @@ protected:
 	FTimerHandle TimerHandle_ChargeCoolExpired;
 	FTimerHandle TimerHandle_ChannelCoolExpired;
 	FTimerHandle TimerHandle_ReloadRateExpired;
+
+	FTimerHandle TimerHandle_ReStartExpired;
 
 	UParticleSystem* ChargeEffect;
 	UParticleSystem* ChargeHitEffect;

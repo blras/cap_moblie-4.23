@@ -348,11 +348,12 @@ void AUserChar::Tick(float DeltaSeconds)
 			LevelUp();
 		}
 	}
-	else if (Hp <= 0)
+	else if (Hp <= 0 && live)
 	{
 		Death();
-		Hp--;
 		InputEnabled();
+		UWorld* const World = GetWorld();
+		World->GetTimerManager().SetTimer(TimerHandle_DeathTimerExpired, this, &AUserChar::ReStart, 5);
 	}
 	
 	// Create fire direction vector
@@ -942,6 +943,10 @@ void AUserChar::SetLevelCount(int lc)
 {
 	Super::SetLevelCount(lc);
 	StageBgm = FairyBgm;
+}
+void AUserChar::ReStart()
+{
+	UGameplayStatics::OpenLevel(this,"maintitle");
 }
 // Called to bind functionality to input
 
