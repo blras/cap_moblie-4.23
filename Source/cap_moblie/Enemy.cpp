@@ -105,7 +105,6 @@ void AEnemy::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	if (HasHpRegen)
 		HpRegeneration();
-	HpbarRef->SetHp(Hp);
 	if (Hp <= 0&&live)
 	{
 		//Destroy();

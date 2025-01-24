@@ -314,7 +314,6 @@ void AUserChar::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	// Find movement direction
 	//HpbarRef = Cast<URogHpbar>(HpWidgetComp->GetUserWidgetObject());
-	HpbarRef->SetHp(Hp);
 	if (Hp > 0&&live)
 	{
 		const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
@@ -380,6 +379,7 @@ void AUserChar::LevelUp()
 	Hp += 15;
 	skillsView =true;
 	skillPoint++;
+	HpbarRef->SetMaxHp(MaxHp);
 	//RandomPowerUps();
 }
 int AUserChar::GetSkillPoint()
@@ -905,7 +905,7 @@ void AUserChar::SkillLevelUp(int Skillnum)
 	case 5: Armor += 1; break;
 	case 6: Crit += 1; break;
 	case 7: CritDmg += 0.3; break;
-	case 8: Hp += 10; MaxHp += 10; break;
+	case 8: Hp += 10; MaxHp += 10; HpbarRef->SetMaxHp(MaxHp); break;
 	case 9:  CooldownRate -= 0.05; break;
 	case 10: MoveSpeed += 5; break;
 	case 11: MaxAmmo += 1; break;

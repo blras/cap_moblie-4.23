@@ -99,6 +99,7 @@ void ARogCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	if (GetActorLocation().Z < -4000)
 		Death();
+	HpbarRef->SetHp(Hp);
 }
 float ARogCharacter::GetHp()
 {
@@ -337,7 +338,7 @@ void ARogCharacter::DropItem()
 	float spawnChance = FMath::RandRange(0, 99);
 	int envitr = 0;
 	UWorld* const World = GetWorld();
-	if (spawnChance < 10)
+	if (spawnChance < 20)
 	{
 		UWorld* const world = GetWorld();
 		//float length = Length;
